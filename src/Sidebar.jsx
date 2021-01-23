@@ -12,10 +12,11 @@ import LayersIcon from '@material-ui/icons/Layers';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import AddIcon from '@material-ui/icons/Add';
+import {useStateValue} from './StateProvider';
 import db from './firebase';
 
 const Sidebar = ()=>{
-
+    const [ {user} ] = useStateValue();
     const [channels,setChannels] = useState([]);
 
     useEffect(()=>{
@@ -32,10 +33,10 @@ const Sidebar = ()=>{
         <div className="sidebar">
             <div className="sidebar_header">
                 <div className="sidebar_info">
-                    <h3> Anmol Jha</h3>
+                    <h3>{user?.displayName}</h3>
                     <h4>
                         <FiberManualRecordIcon/>
-                        Anmol Jha
+                        {user?.displayName}
                     </h4>
                 </div>
                 <CreateIcon/>
@@ -50,9 +51,9 @@ const Sidebar = ()=>{
             <hr/>
             <Sidebarop Icon = {ExpandMoreIcon} title="Channels"/>
             <hr/>
-            <Sidebarop Icon = {AddIcon} title="Add Channels"/>
-            {channels.map(channel=>(
-                <Sidebarop title={channel.name} id={channel.id}/>
+            <Sidebarop Icon = {AddIcon} addchannelOption title="Add Channels"/>
+            {channels.map(channels=>(
+                <Sidebarop title={channels.name} id={channels.id}/>
             ))}
         </div>
         </>

@@ -1,0 +1,28 @@
+.message{
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+.message > img{
+    height: 50px;
+    width: 50px;
+    object-fit: contain;
+}
+.message_timestamp{
+    color: gray;
+    font-weight: 500;
+    font-size: 12px;
+}
+.user_image{
+    border-radius: 90px;
+}
+.msg_content{
+    padding: 2px;
+    padding-left: 4px;
+    font-size: 16px;
+}
+.user_name{
+    font-weight: 600;
+    font-size: 18px;
+    padding-left: 2px;
+}

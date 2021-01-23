@@ -3,18 +3,22 @@ import {Avatar, IconButton} from '@material-ui/core';
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import SearchIcon from '@material-ui/icons/Search';
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
+import {useStateValue} from './StateProvider';
 import './header.css'
 
 
 const Header = ()=>{
+    const [ {user} ] = useStateValue();
     return(
         <>
         <div className="header">
             <div className="header_left">
-                <Avatar
+                <IconButton><Avatar
                     className="header_avatar"
-                    src="https://lh3.googleusercontent.com/proxy/ZKHOq3nDyiFsQJiYT09RKdLMnbxZf_toYMSqsgv4qjM9A9RJCtMy-KJS6nIpgIhOHyBfvGMH6w-_cihrtuLz0peMAJZurH7NjXT8ozxSrOCCnFKVpT8oNUYusPlOpCFuF7q94WMSQv8"
+                    src={user?.photoURL}
+                    alt = {user?.displayName}
                 />
+                </IconButton>
                 <AccessTimeIcon/>
             </div>
             <div className="header_search">
